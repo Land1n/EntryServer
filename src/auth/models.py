@@ -25,14 +25,13 @@ user = Table(
 
 
 class User(SQLAlchemyBaseUserTable[int], Base):
+    id:int = Column(Integer,primary_key=True)
+    username:str = Column(String,nullable=False)
+    telegram_id:int = Column(Integer)
+    subscription:bool = Column(Boolean,default=False)
     
-        id:int = Column(Integer,primary_key=True)
-        username:str = Column(String,nullable=False)
-        telegram_id:int = Column(Integer)
-        subscription:bool = Column(Boolean,default=False)
-
-        email: str = Column(String(length=320), unique=True, index=True, nullable=False)
-        hashed_password: str = Column(String(length=1024), nullable=False)
-        is_active: bool = Column(Boolean, default=True, nullable=False)
-        is_superuser: bool = Column(Boolean, default=False, nullable=False)
-        is_verified: bool = Column(Boolean, default=False, nullable=False)
+    email: str = Column(String(length=320), unique=True, index=True, nullable=False)
+    hashed_password: str = Column(String(length=1024), nullable=False)
+    is_active: bool = Column(Boolean, default=True, nullable=False)
+    is_superuser: bool = Column(Boolean, default=False, nullable=False)
+    is_verified: bool = Column(Boolean, default=False, nullable=False)
